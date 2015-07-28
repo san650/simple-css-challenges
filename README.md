@@ -10,3 +10,9 @@ solutions and we give just one of them.
 ## Challenges
 
 1. [Smiley faces](./challenges/1/README.md)
+
+## License
+
+simple-css-challenges is licensed under the MIT license.
+
+See [LICENSE](./LICENSE) for the full license text.
