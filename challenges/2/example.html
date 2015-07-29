@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pac-Man Ghosts</title>
+    <style>
+      body * { box-sizing: border-box; }
+
+      /*
+         We're going to build the ghosts pixel by pixel!
+         Each ghost is a grid of 14x14 points, we are going to use a point size
+         of 10x10 pixels
+      */
+      .body div, .eye div {
+        width: 10px;
+      }
+
+      .ghost {
+        width: 140px;
+        position: relative;
+      }
+
+      /* body in 14 columns */
+      .body div{float:left}
+      .body{overflow:scroll}/*clearfix hack*/
+
+      .body div:nth-of-type(1),
+      .body div:nth-of-type(14) { height: 80px; margin-top: 60px; }
+
+      .body div:nth-of-type(2),
+      .body div:nth-of-type(13) { height: 100px; margin-top: 30px; }
+
+      .body div:nth-of-type(3),
+      .body div:nth-of-type(12) { height: 100px; margin-top: 20px; }
+
+      .body div:nth-of-type(4),
+      .body div:nth-of-type(11) { height: 120px; margin-top: 10px; }
+
+      .body div:nth-of-type(5),
+      .body div:nth-of-type(10) { height: 130px; margin-top: 10px; }
+
+      .body div:nth-of-type(6),
+      .body div:nth-of-type(9) { height: 140px; }
+
+      .body div:nth-of-type(7),
+      .body div:nth-of-type(8) { height: 120px; }
+
+      /* eyes */
+      .eye {
+        position: absolute;
+        top: 30px;
+        width: 40px;
+      }
+      .eye div {
+        background-color: rgb(255,255,255);
+      }
+      .eye.left {
+        left: 30px;
+      }
+      .eye.right {
+        right: 10px;
+      }
+      .eye div:nth-of-type(1) {
+        width: 20px;
+        height: 50px;
+        margin-left: 10px;
+      }
+      .eye div:nth-of-type(2) {
+        width: 40px;
+        height: 30px;
+        position: absolute;
+        top: 10px;
+      }
+      .eye div:nth-of-type(3) {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 20px;
+        right: 0;
+      }
+
+      /* layout */
+      .ghost {
+        float: left;
+        margin-left: 30px;
+        margin-top: 30px;
+      }
+
+      /* colors */
+      body {
+        background-color: rgb(0,0,0);
+      }
+
+      .eye div {
+        background-color: rgb(255,255,255);
+      }
+
+      .eye div:last-of-type {
+        background-color: rgb(20,13,90); /* blue */
+      }
+
+      .blinky .body div {
+        background-color: rgb(255,12,19); /* red */
+      }
+
+      .pinky .body div {
+        background-color: rgb(242,174,175); /* pink */
+      }
+
+      .inky .body div {
+        background-color: rgb(27,177,230); /* cyan */
+      }
+
+      .clyde .body div {
+        background-color: rgb(249,126,22); /* orange */
+      }
+
+      /* Uncomment this styles to see debugging information
+      .body div,
+      .eye div {
+        border: 1px dotted rgb(200,200,200);
+      }
+
+      .body div {
+        border-color: rgb(255,255,255);
+      }
+
+      .eye div {
+        border-color: green;
+      }
+      */
+    </style>
+  </head>
+  <body>
+    <div class="ghost blinky">
+      <div class="body">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="eye left">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="eye right">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="ghost pinky">
+      <div class="body">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="eye left">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="eye right">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="ghost inky">
+      <div class="body">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="eye left">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="eye right">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="ghost clyde">
+      <div class="body">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="eye left">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="eye right">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </body>
+</html>

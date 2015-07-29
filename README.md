@@ -10,6 +10,7 @@ solutions and we give just one of them.
 ## Challenges
 
 1. [Smiley faces](./challenges/1/README.md)
+2. [Pac-Man ghost](./challenges/2/README.md)
 
 ## License
 
